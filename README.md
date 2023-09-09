@@ -17,6 +17,6 @@
 6. ESlint
 
 ## Ссылки на сайт (Яндекс.Облако)
-Public IP Address: `158.160.99.63`
-Frontend: `filmspb.nomoredomainsicu.ru`
-Backend: `api.filmspb.nomoredomainsicu.ru`
+- Public IP Address: `158.160.99.63`
+- Frontend: `filmspb.nomoredomainsicu.ru`
+- Backend: `api.filmspb.nomoredomainsicu.ru`
