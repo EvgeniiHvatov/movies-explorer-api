@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-// const { errors } = require('celebrate');
+const { errors } = require('celebrate');
 const helmet = require('helmet');
 // const router = require('./routes/router');
 // const handlerCORS = require('./middlewares/handlerCORS');
@@ -14,7 +14,7 @@ const helmet = require('helmet');
 //   login,
 // } = require('./controllers/users');
 // const auth = require('./middlewares/auth');
-// const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT, DB_CONN } = process.env;
 
@@ -27,7 +27,7 @@ app.use(helmet());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(requestLogger);
+app.use(requestLogger);
 // app.use(handlerCORS);
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -38,22 +38,22 @@ app.get('/crash-test', () => {
 // app.post('/signin', validateSignIn, login);
 // app.use(auth);
 // app.use(router);
-// app.use(errorLogger);
-// app.use(errors());
+app.use(errorLogger);
+app.use(errors());
 
-// app.use((err, req, res, next) => {
-//   const {
-//     status = 500,
-//     message,
-//   } = err;
-//   res.status(status)
-//     .send({
-//       message: status === 500
-//         ? 'На сервере произошла ошибка'
-//         : message,
-//     });
-//   next();
-// });
+app.use((err, req, res, next) => {
+  const {
+    status = 500,
+    message,
+  } = err;
+  res.status(status)
+    .send({
+      message: status === 500
+        ? 'На сервере произошла ошибка'
+        : message,
+    });
+  next();
+});
 
 // mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 //   useNewUrlParser: true,
