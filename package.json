@@ -2,13 +2,13 @@
   "name": "movies-explorer-api",
   "version": "1.0.0",
   "description": "Репозиторий для бэкенд-части приложения с API-сервером",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
     "lint": "npx eslint ."
   },
-  "author": "",
+  "author": "Evgenii Hvatov",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
