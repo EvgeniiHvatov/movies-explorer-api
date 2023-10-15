@@ -7,12 +7,6 @@ const validateUrl = (url) => {
   throw new BadRequestError('Невалидный URL');
 };
 
-const idValidation = (id) => {
-  const regex = /^[0-9a-fA-F]{24}$/;
-  if (regex.test(id)) return id;
-  throw new BadRequestError('Невалидный id');
-};
-
 const validateCreateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string()
@@ -55,8 +49,7 @@ const validateMovieId = celebrate({
   params: Joi.object()
     .keys({
       movieId: Joi.string()
-        .required()
-        .custom(idValidation),
+        .required(),
     }),
 });
 
